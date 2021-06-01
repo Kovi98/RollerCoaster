@@ -26,7 +26,8 @@ namespace RollerCoaster
             {
                 threads[i].Join();
             }
-            threads[passengersCount].Interrupt();
+            if (threads[passengersCount].ThreadState != ThreadState.WaitSleepJoin)
+                threads[passengersCount].Interrupt();
             Console.WriteLine("\nAll threads ended!");
             Console.ReadLine();
         }
